@@ -1,0 +1,118 @@
+* {
+    padding: 2px;
+    margin: 2px;
+    box-sizing: border-box;
+    font-family: sans-serif;
+  }
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgb(0, 0, 0);
+  }
+  .container {
+    width: 35%;
+    text-align: center;
+    
+  }
+  .container h1 {
+    font-size: 24px;
+    color: antiquewhite;
+  }
+  .game-pad{
+    transition: transform 0.5s ease-in-out;
+  }
+  .game-pad:hover{
+    transform: scale(0.97);
+  }
+  .container .game-pad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 60%;
+    margin: auto;
+    margin-top: 2rem;
+  }
+  .container .game-pad input {
+    background-color: rgb(232, 231, 231);
+    border: 1px solid burlywood;
+    outline: none;
+    font-size: 24px;
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    text-align: center;
+  }
+  .container .game-pad .click {
+    border: 2px solid black;
+  }
+  .container p {
+    color: white;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 60%;
+    text-align: center;
+    margin: auto;
+    margin-top: 1rem;
+    padding: 3px 2px;
+    font-weight: 600;
+    box-shadow: 2px 3px 30px rgb(255, 249, 249);
+    transition: transform 0.5s ease-in-out;
+  }
+  p:hover{
+    transform : scale(1.03);
+  }
+  .container .status {
+    animation: notwin 0.1s ease normal 6;
+  }
+  
+  .container button {
+    width: 20%;
+    background-color: black;
+    color: white;
+    font-size: 18px;
+    padding: 3px 8px;
+    transition: 0.1s;
+    margin-top: 1rem;
+    visibility: hidden;
+    transition: transform 0.5s ease-in-out;
+  }
+  .container button:hover {
+    background-color: rgb(255, 255, 255);
+    color: black;
+    box-shadow: 1px 1px 10px 5px rgb(245, 108, 108);
+    transform: scale(1.1);
+  }
+  .container .active {
+    visibility: visible;
+  }
+  .container .disable {
+    pointer-events: none;
+  }
+  #scoretable {
+    padding-right:25em;
+    color: antiquewhite;
+    min-width: 65vw;
+    height: 2rem;
+    display: flex;
+    margin: 5px auto;
+    display: flex;
+    margin-left: 0em;
+    justify-content: space-around;
+    flex-direction: row;
+  }
+  #player1,#player2 {
+    width: 30vw;
+    height: 2rem;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: rgb(236, 61, 61);
+  }
+  #player2{
+    color:#00FFFF;
+  }
+  .score {
+    font-size: 1.3rem;
+    margin-top: 10px;
+  }

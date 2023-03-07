@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <title>Input Elements</title>
+    <style>
+        .outer{
+            display: grid;
+            padding : 15px;
+            margin: 15px;
+            justify-content: center;
+        }
+        .container{
+            display: grid;
+            padding : 15px;
+            margin: 15px;
+            justify-content: center;
+            /* text-align: start; */
+            border: 1px solid black;
+            /* width: 75%; */
+
+        }
+        .cus{
+            padding : 10px;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="container">
+            <form id = "form">
+                <label for = "desig">Designation :</label>
+                <select id = "desig" name = "desig" padding = "30px" >
+                    <option value = "">--SELECT--</option>
+                    <option value = "1">Mr. </option>
+                    <option value = "2">Mrs. </option>
+                    <option value = "3">Dr.</option>
+                </select>
+                <br>
+                <br>
+                <label for="user">Name  :  </label>
+                <input  class = "form-control" requred type = "text" placeholder="enter name" id = "user" class = "cus" onchange="myfun"/>
+                <br>
+                <label for="mail">E-mail: </label>
+                <input  class = "form-control" required type = "email" placeholder="enter mail" id = "email" class = "cus" onchange="myfun"/>
+                <br>
+                <label>
+                    password</label><br>
+                  <input name="pass" type="password" id="pwd1" required onchange="myfun">
+                  </label>
+                  <br>
+                  <label>
+                    Re-type password<br>
+                  <input name="pass" type="password" id="pwd2" required>
+                  </label>
+                  <br>
+                <label for="age">Age :</label>
+                <input  class = "form-control" style="width: 150px;" required  type = "number" placeholder="enter age   " id = "age" class = "cus" min = "1" max = "150" onchange="myfun"/>
+                <br>
+                <label for = "range">Range: </label>
+                <input type = "range" id = "range" class = "cus" min="10" max = "100" required onchange="myfun">
+                <br>
+                <br>
+                <label for = "Time">Time : </label>
+                <input type = "time" onchange="myfun">
+                <br>
+                <br>
+                <label for = "date">Date :</label>
+                <input type = "date" onchange="myfun">
+                <br>
+                <br>
+                <label for = "Color">Color : </label>
+                <input type = "Color" onchange="myfun">
+                <br>
+                <br>
+                <!-- <input type="submit" value = "Submit"> -->
+                <br>
+                <br>
+                <input type="file" syle ="margin : 10px">
+                <br>
+                <br>
+                <button onclick="valid()" style="padding: 10px;">Validate</button>
+            </form>
+        </div>  
+    </div>
+
+
+<script>
+    // var usr = "";
+    function myfun(event){
+        console.log(event.target.value);
+    }
+    document.getElementById("user").addEventListener("change",myfun);
+    document.getElementById("email").addEventListener("change",myfun);
+    document.getElementById("pwd1").addEventListener("change",myfun);
+    document.getElementById("age").addEventListener("change",myfun);
+    document.getElementById("range").addEventListener("change",myfun);
+
+
+
+    function valid(){
+        // alert("hi");
+        var val1 = document.getElementById("desig").value;
+        if (val1 == ""){
+            alert("Designation required");
+            return false;
+        }
+        var val2 = document.getElementById("user").value;
+        if(val2 == "" || val2.length < 1){
+            alert("Name required");
+            return false;
+        }
+        var val3 = document.getElementById("age").value;
+        if(val3 < 0 ){
+            alert("Age not valid");
+            return false;
+        }
+        var val4 = document.getElementById("range").value;
+        if(val4 < 10 && val4 > 100){
+            alert("Range invalid");
+            return false;
+        }
+        var val5 = document.getElementById("pwd1").value;
+        var val6 = document.getElementById("pwd2").value;
+        if(val5 != val6){
+            alert("Passwords do not match");
+            return false;
+        }
+        const tem = form.querySelectorAll("input");
+        // console.log(tem);
+        const obj = {};
+        for(let i of tem){
+            obj[i.type]=i.value;
+        }
+        console.log(obj);
+    }
+</script>
+</body>
+</html>
