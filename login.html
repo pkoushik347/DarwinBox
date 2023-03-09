@@ -104,8 +104,8 @@
                     <label for = "pwd">Password:</label><br>
                     <input class="form-control" style="transition: transform 0.5s ease-in-out;" type="password" name = "pwd" id = "pwd" placeholder="password"> <br>
                     <a style="text-align: right;">Forgot Password?</a> <br>
-                    <button class = "btn btn-dark" style="margin: 5px 20px;" href="index.html">Login</button>
-                    <button class = "btn btn-success" style="margin: 5px 20px;" onclick="change_name()">Change</button>
+                    <button class = "btn btn-dark" style="margin: 5px 20px;" href="index.html" onclick="myfun()">Login</button>
+                    <button class = "btn btn-success" style="margin: 5px 20px;" >Change</button>
                     <br>
                     <br>
                     <a target="_blank" href = "input.html">Don't have an account? create one</a>
@@ -124,6 +124,20 @@
                 const usrnm = document.getElementById("user");
                 usrnm.value = "koushik.p@darwinbox.io";
             }
+            
+            function myfun(){
+                console.log("submitted");
+                var user = (document.getElementById("user").value == "ksk347" && document.getElementById("pwd").value == "pass347") || (document.getElementById("user").value == "yash123" && document.getElementById("pwd").value == "pass123")
+                if (user) {
+                // Redirect to a success page
+                window.location.href = 'index.html';
+                } else {
+                // Display an error message
+                alert('Invalid username or password');
+                }
+            }
+            // var btn = document.getElementById("btn1");
+            // btn.addEventListener("click",myfun);
         </script>
     </body>
 </html>
