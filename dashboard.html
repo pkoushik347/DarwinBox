@@ -7,68 +7,78 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Dashboard</title>
         <style>
-            body{
+            body,.container{
                 background-color: black;
-                display:grid;
-                /* flex-wrap: wrap; */
+                display:flex;
+                flex-wrap: wrap;
                 justify-content: center;
             }
             .card{
-                box-shadow: 4px 4px 5px 1px rgba(138, 119, 243, 0.2);
+                box-shadow: 4px 4px 5px 1px rgba(255, 255, 255, 0.2);
                 transition: transform 0.3s ease-in-out;
-                /* border: 1px white; */
+                display: grid;
+                justify-content: center;
+                border: 1px white;
                 border-radius: 5px;
                 width: auto;
-                height: auto;
-                margin: 20px;
+                /* margin: 1px; */
                 padding: 10px;
                 transition: transform 0.3s ease-in-out;
-                background-color: rgba(248, 51, 51, 0)
+                background-color: rgba(255, 255, 255, 0)
             }
             .card:hover{
-                box-shadow: 8px 8px 15px 5px rgba(138, 119, 243, 0.2),
-                inset 8px 8px 15px 5px rgba(138, 119, 243, 0.2);
+                box-shadow: 8px 8px 15px 5px rgba(255, 255, 255, 0.2),
+                inset 8px 8px 15px 5px rgba(255, 255, 255, 0.2);
                 transform: scale(1.05);
             }
             .cont{
                 padding: 2px 16px;
                 border: 1px white;
             }
-            h3,h5{
+            h5{
                 color: rgb(255, 255, 255);
             }
         </style>
     </head>
     <body>
         <input type="text" id = "search" class = "form-control" placeholder="Seacrh for a country..." style="background-color: black;" >
-        <div id="cont1" class = "container">
-
-        </div>
+        <div id="cont1" class = "container"> <h1 style="color: white; width: 100%; padding: 0px 100px; margin:opx 100px">Covid19 - World!</h1></div>
         <script>
-            // var data = null;
-            document.getElementById("search").addEventListener("keydown",function(){
-                var srch = document.getElementById("search").value;
-                // console.log(document.getElementById("search").value);
-            })
-            var str = ""
-            function ajaxGet(){
-                const xhr = new XMLHttpRequest();
-                xhr.open("GET", "https://api.covid19api.com");
-                xhr.send();
-                xhr.onload = function fun(){
-                    data = JSON.parse(xhr.responseText);
-                    console.log(data);     
-                    for (i in data) {
-                            str += `<div class='card'> <div class = 'cont'> <h3>${i} :</h3>`;
-                            for (j in data[i]){
-                                str += `<h5> ${j} : ${data[i][j]} </h5> <br> `;
-                            }
-                            str += `</div> </div>`
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", "https://corona-virus-world-and-india-data.p.rapidapi.com/api");
+            xhr.setRequestHeader("X-RapidAPI-Key", "79e3eda8c4msha191efff369e55cp1ba3a1jsn9839739b6bba");
+            xhr.setRequestHeader("X-RapidAPI-Host", "corona-virus-world-and-india-data.p.rapidapi.com");
+            xhr.send();
+            xhr.onload=function(){
+                var str = "";
+                responseData=JSON.parse(xhr.responseText);
+                for(i in responseData["countries_stat"]){
+                    z = responseData["countries_stat"][i];
+                    str += `<div class = "card col-md-6"  > <div class = "cont">`;
+                    for (k in z){
+                        str+= `<h5 name="${z.country_name}">${k} : ${z[k]}</h5>`
                     }
-                    document.getElementById("cont1").innerHTML = str;
+                    str += `</div></div>`
                 }
+                // console.log(str);
+                document.getElementById("cont1").innerHTML += str;
             }
-            ajaxGet();
+            document.getElementById("search").addEventListener("keyup",function () {
+                // console.log(document.getElementById("search").value);
+                var divs = document.querySelectorAll(".card");
+                console.log(divs);
+                for (let i of divs){
+                    if (i.querySelector("h5").innerText.substr(15).toLocaleLowerCase().startsWith(document.getElementById("search").value)){
+                        // console.log(i.parentNode);
+                        i.style.display = "block";
+                    }
+                    else{
+                        // i.parentNode = "none";
+                        i.style.display = "none";
+                    }
+                    
+                }
+            });
         </script>
     </body>
 </html>
