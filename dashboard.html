@@ -3,18 +3,69 @@
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Ajax</title>
+        <title>Dashboard</title>
+        <style>
+            body{
+                background-color: black;
+                display:grid;
+                /* flex-wrap: wrap; */
+                justify-content: center;
+            }
+            .card{
+                box-shadow: 4px 4px 5px 1px rgba(138, 119, 243, 0.2);
+                transition: transform 0.3s ease-in-out;
+                /* border: 1px white; */
+                border-radius: 5px;
+                width: auto;
+                height: auto;
+                margin: 20px;
+                padding: 10px;
+                transition: transform 0.3s ease-in-out;
+                background-color: rgba(248, 51, 51, 0)
+            }
+            .card:hover{
+                box-shadow: 8px 8px 15px 5px rgba(138, 119, 243, 0.2),
+                inset 8px 8px 15px 5px rgba(138, 119, 243, 0.2);
+                transform: scale(1.05);
+            }
+            .cont{
+                padding: 2px 16px;
+                border: 1px white;
+            }
+            h3,h5{
+                color: rgb(255, 255, 255);
+            }
+        </style>
     </head>
     <body>
+        <input type="text" id = "search" class = "form-control" placeholder="Seacrh for a country..." style="background-color: black;" >
+        <div id="cont1" class = "container">
+
+        </div>
         <script>
+            // var data = null;
+            document.getElementById("search").addEventListener("keydown",function(){
+                var srch = document.getElementById("search").value;
+                // console.log(document.getElementById("search").value);
+            })
+            var str = ""
             function ajaxGet(){
-                const http = new XMLHttpRequest();
-                http.open('GET',"https://api.covid19api.com/");
-                http.send();
-                http.onload = function(){
-                    var  data = JSON.parse(http.responseText);
-                    console.log(data);
+                const xhr = new XMLHttpRequest();
+                xhr.open("GET", "https://api.covid19api.com");
+                xhr.send();
+                xhr.onload = function fun(){
+                    data = JSON.parse(xhr.responseText);
+                    console.log(data);     
+                    for (i in data) {
+                            str += `<div class='card'> <div class = 'cont'> <h3>${i} :</h3>`;
+                            for (j in data[i]){
+                                str += `<h5> ${j} : ${data[i][j]} </h5> <br> `;
+                            }
+                            str += `</div> </div>`
+                    }
+                    document.getElementById("cont1").innerHTML = str;
                 }
             }
             ajaxGet();
