@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax</title>
+</head>
+<body>
+    <script>
+
+
+        function ajaxGet(){
+            const http = new XMLHttpRequest();
+            http.open('GET',"https://reqres.in/api/users?page=2");
+            http.send();
+            http.onload = function(){
+                var  data = JSON.parse(http.responseText);
+                console.log(data);
+            }
+        }
+
+        function ajaxPost(){
+            const http = new XMLHttpRequest();
+            http.open('POST',"https://reqres.in/api/users");
+            var data ={
+                name : "ksk",
+                job : "abc",
+            };
+            data = JSON.stringify(data);
+            http.send(data);
+            // http.setRequestHeader("conte")
+            http.onload = function(){
+                var  data = JSON.parse(http.responseText);
+                console.log(data);
+            }
+        }
+
+        function ajaxPut(){
+            const http = new XMLHttpRequest();
+            http.open('PUT',"https://reqres.in/api/users/2");
+            var data ={
+                name : "ksk",
+                job : "abc",
+            };
+            data = JSON.stringify(data);
+            http.send(data);
+            // http.setRequestHeader("conte")
+            http.onload = function(){
+                var  data = JSON.parse(http.responseText);
+                console.log(data);
+            }
+        }
+
+        ajaxGet();
+        ajaxPost();
+        ajaxPut();
+        // ajaxPut();
+        ajaxGet();
+    </script>
+</body>
+</html>
