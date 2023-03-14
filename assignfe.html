@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <title>Products</title>
+    <style>
+        body{
+            background-color: grey;
+            padding: 10px;
+        }
+        .brd{
+            border: 1px solid black;
+            border-radius: 5px;
+            margin-top: 20px;
+            width: auto;
+        }
+        input{
+            width: auto;
+        }
+        .container{
+            background-color: black;
+        }
+        form{
+            padding: 10px;
+            margin-top: 10px;
+        }
+        h1,label{
+            color: white;
+        }
+        .cont{
+            display: grid;
+            justify-content: center;
+            width: auto;
+        }
+        button{
+            border: none;
+            border-radius: 10px;
+            padding : 10px;
+            margin: 10px;
+            transition: 0.3s ease-in-out;
+        }
+        button:hover{
+            transform: scale(1.05);
+        }
+        #result{
+            background-color: white;
+            border: 2px solid black;
+            border-radius: 10px;
+            padding: 20px;
+        }
+        #search{
+            margin: 10px;
+            border: 1px solid black;
+            border-radius: 10px;
+        }
+        select{
+            width: 100%;
+            padding: 7px;
+        }
+        #result{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .card{
+            border: 1px solid black;
+            border-radius: 10px;
+            width: auto;
+            padding: 10px;
+            margin: 10px;
+            background-color: black;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container brd">
+        <form action="" class="" id="prfrm">
+            <h1>Product Entry</h1>
+            <label for="category">Category:</label>
+            <select name="category" id="category">
+                    <option value="">--SELECT--</option>
+                    <option value="Food">Food</option>
+                    <option value="Electronics">Electronics</option>
+                    <option value="Fashion">Fashion</option>
+                    <option value="Appliances">Appliances</option>
+                    <option value="Toys">Toys</option>
+                    <option value="Medicines">Medicines</option>
+                    <option value="Vehicles">Vehicles</option>
+                    <option value="Personal Create">Personal Care</option>
+            <option value="Grocery">Grocery</option>
+            <option value="Furniture">Furniture</option>
+            </select><br>
+            <label for="sub-category">Sub-Category:</label>
+            <input type="text" id = "sub-category" name = "sub-category" class="form-control" required> <br>
+            <label for="price">Price:</label>
+            <input type="text" id = "price" name = "price" class="form-control" required> <br>
+            <label for="discount">Discount:</label>
+            <input type="text" id = "discount" name = "discount" class="form-control" required> <br>
+        </form>
+        <div class="cont" >
+            <button id="addbtn" type="submit" class="btn btn-primary">Add Product</button>
+        </div>
+    </div>
+    <div class="cont" >
+        <select name="search" id="search">
+            <option value="">--SELECT--</option>
+            <option value="Food">Food</option>
+            <option value="Electronics">Electronics</option>
+            <option value="Fashion">Fashion</option>
+            <option value="Appliances">Appliances</option>
+            <option value="Toys">Toys</option>
+            <option value="Medicines">Medicines</option>
+            <option value="Vehicles">Vehicles</option>
+            <option value="Personal Create">Personal Care</option>
+            <option value="Grocery">Grocery</option>
+            <option value="Furniture">Furniture</option>
+    </select><br>
+        <!-- <button class="btn btn-primary" id="createbtn">Create Report</button> -->
+    </div>
+    <h1 style="color: black;">Report:</h1>
+    <div class="result" id="result">
+
+    </div>
+    <script src="assignmentjs.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" ></script>
+</body>
+</html>
