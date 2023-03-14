@@ -39,8 +39,8 @@ createbtn.addEventListener('change',function(){
         }
     }
     if(stx != ""){
-        document.getElementById("result").innerHTML = str;
-        document.getElementById("result").innerHTML += `<h2> ${stx} -> ${ctr} </h2>`;
+        document.getElementById("result").innerHTML = `<h2> ${stx} -> ${ctr} </h2>`;
+        document.getElementById("result").innerHTML += str;
     }
     else
         document.getElementById("result").innerHTML = ``;
