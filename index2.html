@@ -4,6 +4,7 @@
     <title>Page Title</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
     <link rel="icon" type="image/x-icon" href="ksk.jpeg">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <style>
         body{
             background-color: black;
@@ -56,22 +57,26 @@
     <div id="paraId"></div>
     <script>
         var str = "";
-        const http = new XMLHttpRequest();
-        http.open("GET","https://reqres.in/api/users?page=2");
-        http.onload = ()=>{
-            var obj = JSON.parse(http.responseText);
+        $.get("https://reqres.in/api/users?page=2",function(obj,status){
             console.log(obj.data);
             for (i in obj.data) {
+                str+=`<div class='col-md-6'>`
                 str += `<div class='card1'> <div class='cont'>`
-                str += `<div class="imgctr"><img src = ${obj.data[i].avatar} alt = 'avatar'/></div>`;
+                str += `<div class="imgctr"><img src = ${obj.data[i].avatar} alt = 'avatar'/></div>`
+                str += `<div class="cont">`
                 str +="<h5> Name: <b>" +obj.data[i].first_name +" " +obj.data[i].last_name +"</b> </h5>";
                 str += "<h5> ID: <b>" + obj.data[i].id + "</b> </h5>";
                 str += "<h5> E-mail: <b>" + obj.data[i].email + "</b> </h5>";
-                str += `</div> </div>`
+                str += `</div> </div> </div> </div>`
             }
-            document.getElementById("paraId").innerHTML = str;
-        }
-        http.send();
+            // console.log($("#paraId").html);
+            $("#paraId").html(str);
+            $(document).ready(function(){
+                $("img").click(function(){
+                    $('h5').toggle('slow');
+                });
+            });
+        });
     </script>
   </body>
 </html>

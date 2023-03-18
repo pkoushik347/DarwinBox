@@ -1,0 +1,24 @@
+{
+  "name": "darwinbox",
+  "version": "1.0.0",
+  "description": "node start",
+  "main": "index2.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pkoushik347/DarwinBox.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pkoushik347/DarwinBox/issues"
+  },
+  "homepage": "https://github.com/pkoushik347/DarwinBox",
+  "dependencies": {
+    "express": "^4.18.2",
+    "install": "^0.13.0"
+  }
+}

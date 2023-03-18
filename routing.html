@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My App</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <li><a href="#/">Home</a></li>
+        <li><a href="#/about">About</a></li>
+        <li><a href="#/contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div id="content"></div>
+    
+    <script>
+      function loadPage(page) {
+        $('#content').load(page + '.html');
+      }
+      
+      $(document).ready(function() {
+        if(window.location.hash) {
+          loadPage(window.location.hash.substr(2));
+        } else {
+          loadPage('home');
+        }
+      });
+      
+      $(window).on('hashchange', function() {
+        loadPage(window.location.hash.substr(2));
+      });
+    </script>
+  </body>
+</html>
