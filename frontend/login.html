@@ -99,45 +99,22 @@
             <div class = "outer">
                 <h1 style="text-align: center; padding-bottom: 20px;">Welcome User!</h2>
                 <div class = "inner">
+                    <form action="/image" method="=POST">
                     <label for = "user">Username/Email :</label><br>
                     <input class="form-control" style="transition: transform 0.5s ease-in-out;" type="text" name = "user" id = "user" placeholder="Enter Username" value = "pkoushik347@gmail.com"> <br>
                     <label for = "pwd">Password:</label><br>
                     <input class="form-control" style="transition: transform 0.5s ease-in-out;" type="password" name = "pwd" id = "pwd" placeholder="password"> <br>
                     <a style="text-align: right;">Forgot Password?</a> <br>
-                    <button class = "btn btn-dark" style="margin: 5px 20px;" href="index.html" onclick="myfun()">Login</button>
+                    <input class="form-control" type="file">
+                    <button class = "btn btn-dark" style="margin: 5px 20px;">Login</button>
                     <button class = "btn btn-success" style="margin: 5px 20px;" >Change</button>
                     <br>
                     <br>
                     <a target="_blank" href = "input.html">Don't have an account? create one</a>
+                    </form>
                 </div>
             </div>
         </div>
-        <script>
-            function change_name(){
-                const title = document.getElementsByTagName("h1")[0];
-                // console.log(title.innerText);
-                title.innerText = "LOGIN PAGE!"
-                alert("Title Changed");
-                // const img = document.getElementsByClassName("outer")[0];
-                // img.innerHTML = "img";
-                // img.src = "data:image/png;base64,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"
-                const usrnm = document.getElementById("user");
-                usrnm.value = "koushik.p@darwinbox.io";
-            }
-            
-            function myfun(){
-                console.log("submitted");
-                var user = (document.getElementById("user").value == "ksk347" && document.getElementById("pwd").value == "pass347") || (document.getElementById("user").value == "yash123" && document.getElementById("pwd").value == "pass123")
-                if (user) {
-                // Redirect to a success page
-                window.location.href = 'index.html';
-                } else {
-                // Display an error message
-                alert('Invalid username or password');
-                }
-            }
-            // var btn = document.getElementById("btn1");
-            // btn.addEventListener("click",myfun);
-        </script>
+
     </body>
 </html>
